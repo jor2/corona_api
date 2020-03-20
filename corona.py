@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 
 
 class CoronaAPI(object):
@@ -28,8 +27,8 @@ class CoronaAPI(object):
         for result in self.all_country_statistics:
             if self.country in result.text:
                 numbers = result.text.split('\n')
-        return f'{self.country}\n------------------\nTotal cases: {numbers[2]}\nTotal recovered: {numbers[6]}\nTotal deaths: {numbers[4]}\n'
+        return f'{numbers[1]}\n------------------\nTotal cases: {numbers[2]}\nTotal recovered: {numbers[6]}\nTotal deaths: {numbers[4]}\n'
 
 
 print(CoronaAPI().total_stats)
-print(CoronaAPI().country_stats)
+print(CoronaAPI('Italy').country_stats)
