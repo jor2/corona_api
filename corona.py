@@ -45,5 +45,5 @@ def corona_filtered(country):
 
 
 if __name__ == '__main__':
-    print(CoronaAPI('IrelaN').country_stats)
-    # app.run(debug=True, use_reloader=True)
+    # print(CoronaAPI('IrelaN').country_stats)
+    app.run(debug=True, use_reloader=True)
