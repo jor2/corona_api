@@ -20,7 +20,7 @@ class CoronaAPI(object):
         for result in self.all_country_statistics:
             if 'Total:' in result.text:
                 numbers = result.text.split('\n')
-        return f'Total\n------------------\nTotal cases: {numbers[2]}\nTotal recovered: {numbers[6]}\nTotal deaths: {numbers[4]}\n'
+        return f'Total<br>------------------<br>Total cases: {numbers[2]}<br>Total recovered: {numbers[6]}<br>Total deaths: {numbers[4]}'
 
     @property
     def country_stats(self):
@@ -28,7 +28,8 @@ class CoronaAPI(object):
         for result in self.all_country_statistics:
             if self.country in result.text:
                 numbers = result.text.split('\n')
-        return f'{numbers[1]}\n------------------\nTotal cases: {numbers[2]}\nTotal recovered: {numbers[6]}\nTotal deaths: {numbers[4]}\n'
+        numbers.remove("")
+        return f'{numbers[1]}<br>------------------<br>Total cases: {numbers[2]}<br>Total recovered: {numbers[6]}<br>Total deaths: {numbers[4]}'
 
 
 app = Flask(__name__)
