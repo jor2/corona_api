@@ -20,6 +20,10 @@ class CoronaAPI(object):
         for result in self.all_country_statistics:
             if 'Total:' in result.text:
                 numbers = result.text.split('\n')
+        try:
+            numbers.remove("")
+        except ValueError:
+            pass
         return f'Total<br>------------------<br>Total cases: {numbers[2]}<br>Total recovered: {numbers[6]}<br>Total deaths: {numbers[4]}'
 
     @property
@@ -28,7 +32,10 @@ class CoronaAPI(object):
         for result in self.all_country_statistics:
             if self.country in result.text:
                 numbers = result.text.split('\n')
-        numbers.remove("")
+        try:
+            numbers.remove("")
+        except ValueError:
+            pass
         return f'{numbers[1]}<br>------------------<br>Total cases: {numbers[2]}<br>Total recovered: {numbers[6]}<br>Total deaths: {numbers[4]}'
 
 
